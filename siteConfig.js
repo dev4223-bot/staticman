@@ -9,6 +9,12 @@ const schema = {
     format: Array,
     default: []
   },
+  allowedOrigins: {
+    doc: 'When allowedOrigins is defined, only requests sent from one of the domains listed will be accepted.',
+    docExample: 'allowedOrigins: ["localhost", "eduardoboucas.com"]',
+    default: [],
+    format: Array
+  },
   akismet: {
     enabled: {
       doc: 'Whether to use Akismet to check entries for spam. This requires an Akismet account to be configured in the Staticman API instance being used.',
@@ -52,6 +58,11 @@ const schema = {
     doc: 'Name of the branch being used within the GitHub repository.',
     format: String,
     default: 'master'
+  },
+  endpoint:  {
+    doc: 'The endpoint of the app',
+    format: String,
+    default: ''
   },
   commitMessage: {
     doc: 'Text to be used as the commit message when pushing entries to the GitHub repository.',
@@ -144,6 +155,11 @@ const schema = {
       doc: 'Mailgun domain',
       format: 'EncryptedString',
       default: null
+    },
+    fromAddress: {
+      doc: 'Email address to send notifications from. Will be overridden by a `notifications.fromAddress` parameter in the site config, if one is set.',
+      format: String,
+      default: ''
     }
   },
   path: {
